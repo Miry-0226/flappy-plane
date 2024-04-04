@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dunnb8804t5pt"]
+
+[ext_resource type="Texture2D" uid="uid://c63o5su4ep8mj" path="res://assets/rockIce.png" id="1_7sqso"]
+[ext_resource type="Script" path="res://scripts/rock.gd" id="1_s2rst"]
+[ext_resource type="Texture2D" uid="uid://joir610adc6v" path="res://assets/rockIceDown.png" id="2_iio2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n73mo"]
+size = Vector2(3, 695)
+
+[node name="Rocks" type="Node2D" groups=["rocks"]]
+script = ExtResource("1_s2rst")
+
+[node name="RockBottom" type="Area2D" parent="."]
+position = Vector2(0, 200)
+
+[node name="Sprite2D" type="Sprite2D" parent="RockBottom"]
+texture = ExtResource("1_7sqso")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RockBottom"]
+position = Vector2(2, -199)
+polygon = PackedVector2Array(8, 80, 16, 80, 56, 319, -55, 319)
+metadata/_edit_lock_ = true
+
+[node name="RockTop" type="Area2D" parent="."]
+position = Vector2(0, -200)
+
+[node name="Sprite2D2" type="Sprite2D" parent="RockTop"]
+texture = ExtResource("2_iio2y")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RockTop"]
+position = Vector2(0, 198)
+polygon = PackedVector2Array(-56, -319, 56, -319, 17, -79, 7, -79)
+metadata/_edit_lock_ = true
+
+[node name="ScoreArea" type="Area2D" parent="."]
+position = Vector2(12, -1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+shape = SubResource("RectangleShape2D_n73mo")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="RockBottom" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="RockTop" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvjsof7w0lhqs"]
+
+[ext_resource type="Script" path="res://scripts/ground.gd" id="1_7bnqq"]
+[ext_resource type="Texture2D" uid="uid://cvjd0bm2hccke" path="res://assets/groundIce.png" id="1_hu0x5"]
+
+[node name="Ground" type="Area2D"]
+position = Vector2(394, 442)
+script = ExtResource("1_7bnqq")
+
+[node name="GroundIce" type="Sprite2D" parent="."]
+texture = ExtResource("1_hu0x5")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-405, 0, -370, -2, -363, 6, -313, 9, -270, -3, -247, -29, -154, -32, -97, -9, -56, -9, -31, -24, 33, -24, 67, 8, 106, 8, 131, 19, 168, 18, 193, -9, 232, -12, 253, -32, 340, -36, 361, -10, 404, 0, 404, 35, -405, 36)
+metadata/_edit_lock_ = true
+
+[node name="GroundIce2" type="Sprite2D" parent="."]
+position = Vector2(809, 0)
+texture = ExtResource("1_hu0x5")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(812, -1)
+polygon = PackedVector2Array(-405, 0, -370, -2, -363, 6, -313, 9, -270, -3, -247, -29, -154, -32, -97, -9, -56, -9, -31, -24, 33, -24, 67, 8, 106, 8, 131, 19, 168, 18, 193, -9, 232, -12, 253, -32, 340, -36, 361, -10, 404, 0, 404, 35, -405, 36)
+metadata/_edit_lock_ = true
+
+[node name="GroundIce3" type="Sprite2D" parent="."]
+position = Vector2(1616, 0)
+texture = ExtResource("1_hu0x5")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(1615, -1)
+polygon = PackedVector2Array(-405, 0, -370, -2, -363, 6, -313, 9, -270, -3, -247, -29, -154, -32, -97, -9, -56, -9, -31, -24, 33, -24, 67, 8, 106, 8, 131, 19, 168, 18, 193, -9, 232, -12, 253, -32, 340, -36, 361, -10, 404, 0, 404, 35, -405, 36)
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://b7mgx7e780m3o"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5f1xp"]
+[ext_resource type="Texture2D" uid="uid://bp7nrj1lskn7d" path="res://assets/background.png" id="1_rahsg"]
+[ext_resource type="PackedScene" uid="uid://dunnb8804t5pt" path="res://scenes/rock.tscn" id="2_swsma"]
+[ext_resource type="PackedScene" uid="uid://lieewfhqfhwb" path="res://scenes/player.tscn" id="5_k1qtd"]
+[ext_resource type="FontFile" uid="uid://c2h1d4ll3igaj" path="res://assets/kenvector_future.ttf" id="6_5ya2o"]
+[ext_resource type="PackedScene" uid="uid://cvjsof7w0lhqs" path="res://scenes/ground.tscn" id="6_sxagt"]
+[ext_resource type="PackedScene" uid="uid://bn0uqswx4qjnx" path="res://scenes/game_over.tscn" id="7_e4mrx"]
+[ext_resource type="Texture2D" uid="uid://eidfm6wi0b68" path="res://assets/UI/medalBronze.png" id="8_732u8"]
+[ext_resource type="PackedScene" uid="uid://cdj0xo6i2apx1" path="res://scenes/start_game.tscn" id="9_yhdbl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rkfhv"]
+font = ExtResource("6_5ya2o")
+font_size = 40
+font_color = Color(0, 0, 0.278431, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbk46"]
+font = ExtResource("6_5ya2o")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5f1xp")
+rock_scene = ExtResource("2_swsma")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(401.167, 240)
+texture = ExtResource("1_rahsg")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("5_k1qtd")]
+z_index = 2
+position = Vector2(147, 218)
+
+[node name="RockTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Ground" parent="." instance=ExtResource("6_sxagt")]
+z_index = 1
+position = Vector2(394, 445)
+
+[node name="Score" type="Label" parent="."]
+z_index = 3
+offset_left = 276.0
+offset_top = 11.0
+offset_right = 454.0
+offset_bottom = 60.0
+text = "Score:"
+label_settings = SubResource("LabelSettings_rkfhv")
+
+[node name="GameOver" parent="." instance=ExtResource("7_e4mrx")]
+
+[node name="HighScore" type="Label" parent="GameOver"]
+offset_left = 189.0
+offset_top = 137.0
+offset_right = 627.0
+offset_bottom = 194.0
+text = "High score: 0"
+label_settings = SubResource("LabelSettings_kbk46")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Medal" type="Sprite2D" parent="GameOver"]
+position = Vector2(387, 242)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_732u8")
+
+[node name="Menu" parent="." instance=ExtResource("9_yhdbl")]
+
+[connection signal="timeout" from="RockTimer" to="." method="_on_rock_timer_timeout"]
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
+[connection signal="restart" from="GameOver" to="." method="new_game"]
+[connection signal="start_game" from="Menu" to="." method="new_game"]

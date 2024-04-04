@@ -1,0 +1,161 @@
+[gd_scene load_steps=18 format=3 uid="uid://cdj0xo6i2apx1"]
+
+[ext_resource type="Texture2D" uid="uid://bpkrrf587lnqi" path="res://assets/UI/buttonLarge.png" id="1_iac3b"]
+[ext_resource type="Script" path="res://scripts/start_game.gd" id="1_nyu71"]
+[ext_resource type="FontFile" uid="uid://c2h1d4ll3igaj" path="res://assets/kenvector_future.ttf" id="2_74djl"]
+[ext_resource type="Texture2D" uid="uid://c12dnq45cjcxu" path="res://assets/Letters/letterF.png" id="3_vypr1"]
+[ext_resource type="Texture2D" uid="uid://chpxjcge4dshl" path="res://assets/Letters/letterL.png" id="4_vtapc"]
+[ext_resource type="Texture2D" uid="uid://d2ht6a5b74huc" path="res://assets/Letters/letterA.png" id="5_q0bkn"]
+[ext_resource type="Texture2D" uid="uid://yi5qb05jatf5" path="res://assets/Letters/letterP.png" id="6_nth47"]
+[ext_resource type="Texture2D" uid="uid://cwxtu4rrx6122" path="res://assets/Letters/letterY.png" id="7_gfndb"]
+[ext_resource type="Texture2D" uid="uid://daeyno2byyslc" path="res://assets/Letters/letterN.png" id="8_4xbb5"]
+[ext_resource type="Texture2D" uid="uid://dkq1i057jut16" path="res://assets/UI/UIbg.png" id="9_t1v1v"]
+[ext_resource type="Texture2D" uid="uid://bweo24e4863n2" path="res://assets/Planes/planeRed1.png" id="10_6x2k2"]
+[ext_resource type="Texture2D" uid="uid://b80arv60k4nxc" path="res://assets/Planes/planeRed2.png" id="11_howsd"]
+[ext_resource type="Texture2D" uid="uid://cv61ydcenawcx" path="res://assets/Planes/planeRed3.png" id="12_tw4wu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqhnh"]
+font = ExtResource("2_74djl")
+font_size = 40
+font_color = Color(0, 0.658824, 0.858824, 1)
+outline_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_sqbeh"]
+font = ExtResource("2_74djl")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b6st1"]
+load_path = "res://.godot/imported/letterE.png-cb6cfc9879082791b76cb9645710f3dc.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ft0p0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_6x2k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_howsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tw4wu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_nyu71")
+
+[node name="UIbg" type="Sprite2D" parent="."]
+position = Vector2(400, 240)
+scale = Vector2(3, 1.8)
+texture = ExtResource("9_t1v1v")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 44.0
+offset_right = 605.0
+offset_bottom = 89.0
+text = "Welcome to
+"
+label_settings = SubResource("LabelSettings_jqhnh")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 296.0
+offset_top = 304.0
+offset_right = 500.0
+offset_bottom = 382.0
+icon = ExtResource("1_iac3b")
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 16.0
+offset_right = 151.0
+offset_bottom = 51.0
+text = "play"
+label_settings = SubResource("LabelSettings_sqbeh")
+metadata/_edit_lock_ = true
+
+[node name="Flappy" type="Node2D" parent="."]
+position = Vector2(16, 8)
+
+[node name="LetterF" type="Sprite2D" parent="Flappy"]
+position = Vector2(181.6, 120)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_vypr1")
+metadata/_edit_lock_ = true
+
+[node name="LetterL" type="Sprite2D" parent="Flappy"]
+position = Vector2(213.6, 129)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_vtapc")
+metadata/_edit_lock_ = true
+
+[node name="LetterA" type="Sprite2D" parent="Flappy"]
+position = Vector2(242.6, 120)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_q0bkn")
+metadata/_edit_lock_ = true
+
+[node name="LetterP" type="Sprite2D" parent="Flappy"]
+position = Vector2(276.6, 130)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_nth47")
+metadata/_edit_lock_ = true
+
+[node name="LetterP2" type="Sprite2D" parent="Flappy"]
+position = Vector2(308.6, 119)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_nth47")
+metadata/_edit_lock_ = true
+
+[node name="LetterY" type="Sprite2D" parent="Flappy"]
+position = Vector2(336.6, 134)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("7_gfndb")
+metadata/_edit_lock_ = true
+
+[node name="Plane" type="Node2D" parent="."]
+position = Vector2(16, 8)
+
+[node name="LetterP3" type="Sprite2D" parent="Plane"]
+position = Vector2(407.2, 124.6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_nth47")
+metadata/_edit_lock_ = true
+
+[node name="LetterL2" type="Sprite2D" parent="Plane"]
+position = Vector2(439, 129)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_vtapc")
+metadata/_edit_lock_ = true
+
+[node name="LetterA2" type="Sprite2D" parent="Plane"]
+position = Vector2(475, 122)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_q0bkn")
+metadata/_edit_lock_ = true
+
+[node name="LetterN" type="Sprite2D" parent="Plane"]
+position = Vector2(517, 129)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("8_4xbb5")
+metadata/_edit_lock_ = true
+
+[node name="LetterE" type="Sprite2D" parent="Plane"]
+position = Vector2(556, 126)
+scale = Vector2(0.8, 0.8)
+texture = SubResource("CompressedTexture2D_b6st1")
+metadata/_edit_lock_ = true
+
+[node name="PlaneSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(400, 224)
+sprite_frames = SubResource("SpriteFrames_ft0p0")
+frame_progress = 0.188359
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

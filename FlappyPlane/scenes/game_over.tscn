@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn0uqswx4qjnx"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_5hm6i"]
+[ext_resource type="Texture2D" uid="uid://bpkrrf587lnqi" path="res://assets/UI/buttonLarge.png" id="1_e4eip"]
+[ext_resource type="FontFile" uid="uid://c2h1d4ll3igaj" path="res://assets/kenvector_future.ttf" id="2_13n0d"]
+[ext_resource type="Texture2D" uid="uid://btbr0rhetdtc2" path="res://assets/UI/textGameOver.png" id="4_lnmts"]
+[ext_resource type="Texture2D" uid="uid://dkq1i057jut16" path="res://assets/UI/UIbg.png" id="5_vhm8o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4pujb"]
+font = ExtResource("2_13n0d")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_5hm6i")
+
+[node name="UIbg" type="Sprite2D" parent="."]
+position = Vector2(402, 241)
+scale = Vector2(3, 1.8)
+texture = ExtResource("5_vhm8o")
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 254.0
+offset_top = 335.0
+offset_right = 519.0
+offset_bottom = 413.0
+icon = ExtResource("1_e4eip")
+flat = true
+alignment = 0
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="RestartButton"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 249.0
+offset_bottom = 56.0
+text = "Restart"
+label_settings = SubResource("LabelSettings_4pujb")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TextGameOver" type="Sprite2D" parent="."]
+position = Vector2(393, 88)
+texture = ExtResource("4_lnmts")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
